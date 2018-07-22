@@ -4,11 +4,20 @@ import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
+import dagger.android.support.AndroidSupportInjectionModule
 import plugow.aidiagnose.AiApplication
+import plugow.aidiagnose.di.module.ActivityBindingModule
+import plugow.aidiagnose.di.module.ApplicationModule
+import plugow.aidiagnose.di.module.ViewModelModule
 import javax.inject.Singleton
 
 @Singleton
-@Component
+@Component(modules = [
+    ActivityBindingModule::class,
+    ViewModelModule::class,
+    ApplicationModule::class,
+    AndroidSupportInjectionModule::class
+])
 interface AppComponent : AndroidInjector<AiApplication>{
 
     @Component.Builder

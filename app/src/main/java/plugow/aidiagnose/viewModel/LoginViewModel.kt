@@ -3,8 +3,9 @@ package plugow.aidiagnose.viewModel
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
+import javax.inject.Inject
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel @Inject constructor() : ViewModel() {
     val succesfullVisibility = ObservableField<Boolean>()
     val registerVisibility = ObservableField<Boolean>(true)
     val registerEmail = ObservableField<String>("")
