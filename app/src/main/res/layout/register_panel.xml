@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="plugow.aidiagnose.viewModel.LoginViewModel" />
+    </data>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="90dp"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+        <LinearLayout
+            android:id="@+id/hiddenPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_panel"
+            android:orientation="vertical"
+            android:paddingEnd="48dp"
+            android:paddingStart="48dp">
+
+            <LinearLayout
+                android:id="@+id/arrowRegister"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/registerArrowImageView"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/arrow_up_icon" />
+
+                <TextView
+                    android:id="@+id/registerTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/register"
+                    android:textColor="@color/darkGray"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/registerEditLinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.registerVisibility ? View.VISIBLE : View.GONE}">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/emailError"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:errorEnabled="@{viewModel.invalidEmailEnabled}"
+                        app:errorText="@{viewModel.invalidEmail}"
+                        app:hintEnabled="false">
+
+                        <EditText
+                            android:id="@+id/emailEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@drawable/custom_edit_text"
+                            android:ellipsize="start"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:hint="@string/email"
+                            android:inputType="textEmailAddress"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onEmailTextChanged(text)}"
+                            android:text="@={viewModel.registerEmail}" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/nameError"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:errorEnabled="@{viewModel.invalidNameEnabled}"
+                        app:errorText="@{viewModel.invalidName}"
+                        app:hintEnabled="false">
+
+                        <EditText
+                            android:id="@+id/firstNameEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@drawable/custom_edit_text"
+                            android:ellipsize="start"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:hint="@string/first_name"
+                            android:inputType="text"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onFirstNameTextChanged(text)}"
+                            android:text="@={viewModel.firstName}" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/lastNameError"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:errorEnabled="@{viewModel.invalidLastNameEnabled}"
+                        app:errorText="@{viewModel.invalidLastName}"
+                        app:hintEnabled="false">
+
+                        <EditText
+                            android:id="@+id/lastNameEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@drawable/custom_edit_text"
+                            android:ellipsize="start"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:hint="@string/last_name"
+                            android:inputType="text"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onLastNameTextChanged(text)}"
+                            android:text="@={viewModel.lastName}" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/firstPasswordError"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:errorEnabled="@{viewModel.invalidFirstPassEnabled}"
+                        app:errorText="@{viewModel.invalidFirstPass}"
+                        app:hintEnabled="false">
+
+                        <EditText
+                            android:id="@+id/registerPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@drawable/custom_edit_text"
+                            android:ellipsize="start"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:hint="@string/enter_password"
+                            android:inputType="textPassword"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onFirstPassTextChanged(text)}"
+                            android:text="@={viewModel.registerPassword}" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/secondPasswordError"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="48dp"
+                        app:errorEnabled="@{viewModel.invalidSecondPassEnabled}"
+                        app:errorText="@{viewModel.invalidSecondPass}"
+                        app:hintEnabled="false">
+
+                        <EditText
+                            android:id="@+id/secondRegisterPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@drawable/custom_edit_text"
+                            android:ellipsize="start"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:hint="@string/repeat_password"
+                            android:inputType="textPassword"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onSecondPassTextChanged(text)}"
+                            android:text="@={viewModel.registerRepeatPassword}" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <LinearLayout
+                        android:id="@+id/registerButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="48dp"
+                        android:background="@drawable/login_button"
+                        android:gravity="center"
+                        android:onClick="@{() -> viewModel.registerButtonListener()}"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginRight="15dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/reigster_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/register"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/white"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</layout>
+

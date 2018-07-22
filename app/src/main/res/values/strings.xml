@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AiDiagnose</string>
+    <string name="register">Register</string>
+    <string name="register_succesfull">Success</string>
+    <string name="back">Back</string>
+    <string name="fill_register">Fill</string>
+    <string name="email">Email</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="enter_password">Enter password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="pleaseLogin">Please login to your account</string>
+    <string name="password">Password</string>
+    <string name="forgotten">I have forgotten my password</string>
+    <string name="login">Login</string>
+    <string name="username">Email</string>
+</resources>
