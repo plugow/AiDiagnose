@@ -7,6 +7,7 @@ import dagger.MapKey
 import dagger.Module
 import dagger.multibindings.IntoMap
 import plugow.aidiagnose.viewModel.LoginViewModel
+import plugow.aidiagnose.viewModel.MapViewModel
 import plugow.aidiagnose.viewModel.SymptomsViewModel
 import javax.inject.Inject
 import javax.inject.Provider
@@ -39,4 +40,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SymptomsViewModel::class)
     internal abstract fun bindSymptomsViewModel(viewModel: SymptomsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MapViewModel::class)
+    internal abstract fun bindMapViewModel(viewModel: MapViewModel): ViewModel
 }
