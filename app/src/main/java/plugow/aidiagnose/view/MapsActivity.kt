@@ -12,6 +12,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_maps.*
+import org.jetbrains.anko.startActivity
 import plugow.aidiagnose.R
 import plugow.aidiagnose.databinding.ActivityMapsBinding
 import plugow.aidiagnose.view.dialogFragment.MapBottomSheetFragment
@@ -37,6 +38,7 @@ class MapsActivity : DaggerAppCompatActivity(), OnMapReadyCallback {
             val bottomSheetFragment=MapBottomSheetFragment.newInstance()
             bottomSheetFragment.show(supportFragmentManager,"bottom sheet")
         }
+        symptomQuestionTextView.setOnClickListener { startActivity<SymptomsActivity>() }
     }
 
     /**

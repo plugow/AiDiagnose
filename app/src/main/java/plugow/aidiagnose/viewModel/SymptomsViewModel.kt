@@ -9,24 +9,24 @@ import plugow.aidiagnose.network.ApiService
 import javax.inject.Inject
 
 class SymptomsViewModel @Inject constructor() : ViewModel() {
-    var companies:MutableLiveData<List<Symptom>> = MutableLiveData()
+    var symptoms:MutableLiveData<List<Symptom>> = MutableLiveData()
     val service:ApiService by lazy {ApiService()}
 
 
     fun getSymptomList(): LiveData<List<Symptom>> {
-        if (companies.value==null){
-            companies= MutableLiveData()
-            loadCompanies()
+        if (symptoms.value==null){
+            symptoms= MutableLiveData()
+            loadSymptoms()
         }
-        return companies
+        return symptoms
 
     }
 
-    fun loadCompanies(){
+    fun loadSymptoms(){
         val symptomsList = service.fetchSymptoms()
                 .subscribeBy (
                         onError = {},
-                        onSuccess = {companies.value= it.body()}
+                        onSuccess = {symptoms.value= it.body()}
                 )
 
     }
