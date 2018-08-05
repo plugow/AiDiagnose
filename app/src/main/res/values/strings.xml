@@ -16,4 +16,5 @@
     <string name="username">Email</string>
     <string name="symptom_question">Co Ci dolega?</string>
     <string name="title_activity_maps">Map</string>
+    <string name="specialization">Specjalizacje</string>
 </resources>

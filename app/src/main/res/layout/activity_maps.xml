@@ -60,6 +60,7 @@
                 android:background="@color/gray" />
 
             <ImageView
+                android:id="@+id/doctorImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="16dp"

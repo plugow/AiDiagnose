@@ -11,8 +11,10 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.android.synthetic.main.activity_maps.*
 import plugow.aidiagnose.R
 import plugow.aidiagnose.databinding.ActivityMapsBinding
+import plugow.aidiagnose.view.dialogFragment.MapBottomSheetFragment
 import plugow.aidiagnose.viewModel.MapViewModel
 import javax.inject.Inject
 
@@ -31,6 +33,10 @@ class MapsActivity : DaggerAppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        doctorImageView.setOnClickListener {
+            val bottomSheetFragment=MapBottomSheetFragment.newInstance()
+            bottomSheetFragment.show(supportFragmentManager,"bottom sheet")
+        }
     }
 
     /**
