@@ -4,6 +4,7 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import okhttp3.RequestBody
+import plugow.aidiagnose.model.Doctor
 import plugow.aidiagnose.model.Specialization
 import plugow.aidiagnose.model.Symptom
 import retrofit2.Response
@@ -31,6 +32,14 @@ class ApiService {
 //        val user : User?= repository.getUserByRole(2)
         val token = "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImNyZWF0ZWRBdCI6MTUzMzQ2MjY5NDI1MSwidXBkYXRlZEF0IjoxNTMzNDYyNjk0MjUxLCJpZCI6MSwiZmlyc3ROYW1lIjoiQWRtaW4iLCJsYXN0TmFtZSI6IkFkbWluIiwicHd6IjoiIiwiZW1haWwiOiJwbHVnb3c3QGdtYWlsLmNvbSIsImlzQWN0aXZlIjp0cnVlLCJ0ZW1wb3JhcnlQYXNzd29yZCI6IiIsInRlbXBvcmFyeVBhc3N3b3JkRXhwaXJhdGlvblRpbWVzdGFtcCI6bnVsbCwicm9sZSI6MX0sImlhdCI6MTUzMzQ2Mjg5NCwiZXhwIjoxNTM2MDU0ODk0LCJhdWQiOiJwbHVnb3ciLCJpc3MiOiJwbHVnb3cifQ.ZhXofDhbXlCu0l8nhwj04BCKG8tpUUkW9Z6YlROj_i0"
         return api.getSpecializations(token)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    fun fetchDoctors(): Single<Response<List<Doctor>>>{
+//        val user : User?= repository.getUserByRole(2)
+        val token = "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImNyZWF0ZWRBdCI6MTUzMzQ2MjY5NDI1MSwidXBkYXRlZEF0IjoxNTMzNDYyNjk0MjUxLCJpZCI6MSwiZmlyc3ROYW1lIjoiQWRtaW4iLCJsYXN0TmFtZSI6IkFkbWluIiwicHd6IjoiIiwiZW1haWwiOiJwbHVnb3c3QGdtYWlsLmNvbSIsImlzQWN0aXZlIjp0cnVlLCJ0ZW1wb3JhcnlQYXNzd29yZCI6IiIsInRlbXBvcmFyeVBhc3N3b3JkRXhwaXJhdGlvblRpbWVzdGFtcCI6bnVsbCwicm9sZSI6MX0sImlhdCI6MTUzMzQ2Mjg5NCwiZXhwIjoxNTM2MDU0ODk0LCJhdWQiOiJwbHVnb3ciLCJpc3MiOiJwbHVnb3cifQ.ZhXofDhbXlCu0l8nhwj04BCKG8tpUUkW9Z6YlROj_i0"
+        return api.getDoctors(token)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }

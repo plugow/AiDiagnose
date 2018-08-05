@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_maps.*
 import org.jetbrains.anko.startActivity
 import plugow.aidiagnose.R
 import plugow.aidiagnose.databinding.ActivityMapsBinding
+import plugow.aidiagnose.model.Doctor
 import plugow.aidiagnose.view.dialogFragment.MapBottomSheetFragment
 import plugow.aidiagnose.viewModel.MapViewModel
 import javax.inject.Inject
@@ -24,6 +25,7 @@ class MapsActivity : DaggerAppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var markers:MutableList<MarkerOptions>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +41,16 @@ class MapsActivity : DaggerAppCompatActivity(), OnMapReadyCallback {
             bottomSheetFragment.show(supportFragmentManager,"bottom sheet")
         }
         symptomQuestionTextView.setOnClickListener { startActivity<SymptomsActivity>() }
+
+        viewModel.getDoctorList().observe(this, android.arch.lifecycle.Observer<List<Doctor>> { doctors ->
+            mMap.clear()
+            markers= mutableListOf()
+            doctors?.forEach { doc ->
+                val pos=LatLng(doc.longitude,doc.latitude)
+                mMap.addMarker(MarkerOptions().position(pos).title(doc.firstName))
+            }
+
+         })
     }
 
     /**
@@ -54,8 +66,7 @@ class MapsActivity : DaggerAppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val krakow = LatLng(50.067599, 19.974942)
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(krakow, 14.5.toFloat()))
     }
 }

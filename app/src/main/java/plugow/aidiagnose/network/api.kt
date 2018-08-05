@@ -16,6 +16,6 @@ interface api {
     @GET("specialization")
     fun getSpecializations(@Header("Authorization") token: String?): Single<Response<List<Specialization>>>
 
-    @GET("specialization")
+    @GET("getDoctors")
     fun getDoctors(@Header("Authorization") token: String?): Single<Response<List<Doctor>>>
 }
