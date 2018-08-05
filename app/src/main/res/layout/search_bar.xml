@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:elevation="1dp"
-            android:elevation="1dp">
+            style="@style/AppTheme.AppBarOverlay">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -39,7 +39,7 @@
                 android:background="@drawable/custom_edit_text"
                 android:inputType="textPersonName"
                 android:textColor="@color/textColorPrimary"
-                android:text="Name"
+                android:hint="@string/symptom_question"
                 android:paddingLeft="8dp" />
         </android.support.design.widget.AppBarLayout>
     </android.support.constraint.ConstraintLayout>
