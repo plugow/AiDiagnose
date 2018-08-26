@@ -1,18 +1,18 @@
 <resources>
     <string name="app_name">AiDiagnose</string>
-    <string name="register">Register</string>
+    <string name="register">Rejestracja</string>
     <string name="register_succesfull">Success</string>
     <string name="back">Back</string>
     <string name="fill_register">Fill</string>
     <string name="email">Email</string>
-    <string name="first_name">First name</string>
-    <string name="last_name">Last name</string>
-    <string name="enter_password">Enter password</string>
-    <string name="repeat_password">Repeat password</string>
-    <string name="pleaseLogin">Please login to your account</string>
-    <string name="password">Password</string>
-    <string name="forgotten">I have forgotten my password</string>
-    <string name="login">Login</string>
+    <string name="first_name">Imię</string>
+    <string name="last_name">Nazwisko</string>
+    <string name="enter_password">Hasło</string>
+    <string name="repeat_password">Powtórz hasło</string>
+    <string name="pleaseLogin">Zaloguj się na swoje konto</string>
+    <string name="password">Hasło</string>
+    <string name="forgotten">Zapomniałem hasła</string>
+    <string name="login">Zaloguj</string>
     <string name="username">Email</string>
     <string name="symptom_question">Co Ci dolega?</string>
     <string name="title_activity_maps">Map</string>

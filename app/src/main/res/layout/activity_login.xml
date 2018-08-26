@@ -29,7 +29,7 @@
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="0dp"
-                    android:layout_height="60dp"
+                    android:layout_height="150dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="54dp"
                     android:src="@drawable/logo"
@@ -37,15 +37,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="24dp"
-                    android:src="@drawable/bill_scanner_logo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
 
 
                 <TextView
@@ -53,12 +46,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="56dp"
+                    android:layout_marginTop="100dp"
                     android:text="@string/pleaseLogin"
                     android:textAllCaps="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/nameError"
@@ -132,7 +125,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/forgotten"
-                        android:textColor="@color/colorAccent" />
+                        android:textColor="@color/colorPrimary" />
 
                 </LinearLayout>
 
@@ -141,7 +134,7 @@
                     android:id="@+id/loginButton"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="64dp"
                     android:background="@drawable/login_button"
                     android:gravity="center"
                     android:onClick="@{() -> viewModel.loginButtonListener()}"
