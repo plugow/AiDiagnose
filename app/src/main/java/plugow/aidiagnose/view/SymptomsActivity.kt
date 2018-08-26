@@ -7,8 +7,10 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_symptoms.*
+import kotlinx.android.synthetic.main.search_bar.*
 import org.jetbrains.anko.toast
 import plugow.aidiagnose.R
 import plugow.aidiagnose.databinding.ActivitySymptomsBinding
@@ -37,11 +39,16 @@ class SymptomsActivity : DaggerAppCompatActivity() {
         viewModel.getSymptomList().observe(this, Observer<List<Symptom>> { companyList ->
             mAdapter = SymptomAdapter(companyList!!, object : SymptomListener {
                 override fun onSymptomClicked(pos: Int) {
-//                    startActivity<PaymentSelectionActivity>("companyServerId" to companyList[pos].serverId)
-                    toast("działa")
+                    viewModel.onSymptomClicked(pos)
                 }
             })
             recyclerView.adapter = mAdapter
         })
+
+        editText.onFocusChangeListener= View.OnFocusChangeListener { v, hasFocus -> if (hasFocus)viewModel.onFocus(1) }
+        editText2.onFocusChangeListener= View.OnFocusChangeListener { v, hasFocus -> if (hasFocus) viewModel.onFocus(2) }
+        editText3.onFocusChangeListener= View.OnFocusChangeListener { v, hasFocus -> if (hasFocus) viewModel.onFocus(3) }
+        editText4.onFocusChangeListener= View.OnFocusChangeListener { v, hasFocus -> if (hasFocus) viewModel.onFocus(4) }
+        editText5.onFocusChangeListener= View.OnFocusChangeListener { v, hasFocus -> if (hasFocus) viewModel.onFocus(5) }
     }
 }

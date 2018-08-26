@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="plugow.aidiagnose.viewModel.SymptomsViewModel"/>
@@ -24,14 +25,24 @@
                 android:layout_height="?android:attr/actionBarSize"
                 app:navigationIcon="?attr/homeAsUpIndicator"
                 app:popupTheme="@style/AppTheme.PopupOverlay"
-                app:theme="@style/ToolbarStyle" />
+                app:theme="@style/ToolbarStyle" >
+                <TextView
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/search"
+                    android:gravity="center_vertical|end"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp" />
+            </android.support.v7.widget.Toolbar>
 
             <EditText
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginRight="40dp"
+                android:layout_marginEnd="60dp"
+                android:layout_marginRight="60dp"
                 android:layout_marginStart="48dp"
                 android:layout_marginLeft="48dp"
                 android:layout_marginBottom="16dp"
@@ -40,7 +51,147 @@
                 android:inputType="textPersonName"
                 android:textColor="@color/textColorPrimary"
                 android:hint="@string/symptom_question"
-                android:paddingLeft="8dp" />
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.onFirstSymptom(text)}"
+                android:paddingLeft="8dp"
+                android:text="@={viewModel.firstText}"/>
+
+            <LinearLayout
+                android:visibility="@{viewModel.secondVisibility ? View.VISIBLE : View.GONE}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+                <EditText
+                    android:onTextChanged="@{(text, start, before, count) -> viewModel.onSecondSymptom(text)}"
+                    android:gravity="center_vertical"
+                    android:id="@+id/editText2"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginLeft="48dp"
+                    android:paddingStart="8dp"
+                    android:background="@drawable/custom_edit_text"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/textColorPrimary"
+                    android:hint="@string/next_symptom"
+                    android:paddingLeft="8dp"
+                    android:text="@={viewModel.secondText}"/>
+
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/baseline_remove_circle_outline_white_18"
+                    android:layout_marginRight="16dp"
+                    android:onClick="@{() -> viewModel.secondClick()}"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="@{viewModel.thirdVisibility ? View.VISIBLE : View.GONE}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+                <EditText
+                    android:onTextChanged="@{(text, start, before, count) -> viewModel.onThirdSymptom(text)}"
+                    android:gravity="center_vertical"
+                    android:id="@+id/editText3"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginLeft="48dp"
+                    android:paddingStart="8dp"
+                    android:background="@drawable/custom_edit_text"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/textColorPrimary"
+                    android:hint="@string/next_symptom"
+                    android:paddingLeft="8dp"
+                    android:text="@={viewModel.thirdText}"/>
+
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_remove_circle_outline_white_18"
+                    android:onClick="@{() -> viewModel.thirdClick()}"
+                    android:layout_marginRight="16dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="@{viewModel.fourthVisibility ? View.VISIBLE : View.GONE}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+                <EditText
+                    android:onTextChanged="@{(text, start, before, count) -> viewModel.onFourthSymptom(text)}"
+                    android:gravity="center_vertical"
+                    android:id="@+id/editText4"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginLeft="48dp"
+                    android:paddingStart="8dp"
+                    android:background="@drawable/custom_edit_text"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/textColorPrimary"
+                    android:hint="@string/next_symptom"
+                    android:paddingLeft="8dp"
+                    android:text="@={viewModel.fourthText}"/>
+
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_remove_circle_outline_white_18"
+                    android:onClick="@{() -> viewModel.fourthClick()}"
+                    android:layout_marginRight="16dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="@{viewModel.fifthVisibility ? View.VISIBLE : View.GONE}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+                <EditText
+                    android:onTextChanged="@{(text, start, before, count) -> viewModel.onFifthSymptom(text)}"
+                    android:gravity="center_vertical"
+                    android:id="@+id/editText5"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginLeft="48dp"
+                    android:paddingStart="8dp"
+                    android:background="@drawable/custom_edit_text"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/textColorPrimary"
+                    android:hint="@string/next_symptom"
+                    android:paddingLeft="8dp"
+                    android:text="@={viewModel.fifthText}"/>
+
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_remove_circle_outline_white_18"
+                    android:onClick="@{() -> viewModel.fifthClick()}"
+                    android:layout_marginRight="16dp"/>
+            </LinearLayout>
         </android.support.design.widget.AppBarLayout>
     </android.support.constraint.ConstraintLayout>
 </layout>

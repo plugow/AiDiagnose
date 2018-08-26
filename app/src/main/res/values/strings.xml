@@ -20,4 +20,6 @@
     <string name="patient">Pacjent</string>
     <string name="doctor">Doktor</string>
     <string name="pwz">PWZ</string>
+    <string name="search">Szukaj</string>
+    <string name="next_symptom">Następny objaw</string>
 </resources>
