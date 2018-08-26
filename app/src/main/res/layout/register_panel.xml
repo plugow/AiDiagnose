@@ -55,10 +55,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+
 
                 <LinearLayout
                     android:id="@+id/registerEditLinear"
@@ -66,6 +63,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="@{viewModel.registerVisibility ? View.VISIBLE : View.GONE}">
+
+                    <Switch
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.switchText}"
+                        android:layout_marginBottom="16dp"
+                        android:onCheckedChanged="@{(switch, checked) -> viewModel.onSwitchChanged(checked)}"/>
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/emailError"
@@ -159,7 +163,6 @@
                         android:id="@+id/secondPasswordError"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="48dp"
                         app:errorEnabled="@{viewModel.invalidSecondPassEnabled}"
                         app:errorText="@{viewModel.invalidSecondPass}"
                         app:hintEnabled="false">
@@ -177,10 +180,34 @@
                             android:text="@={viewModel.registerRepeatPassword}" />
                     </android.support.design.widget.TextInputLayout>
 
+                    <android.support.design.widget.TextInputLayout
+                        android:visibility="@{viewModel.pwzVisibility ? View.VISIBLE : View.GONE}"
+                        android:id="@+id/pwdError"
+                        android:layout_marginTop="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:errorEnabled="@{viewModel.invalidPwzEnabled}"
+                        app:errorText="@{viewModel.invalidPwz}"
+                        app:hintEnabled="false">
+
+                        <EditText
+                            android:id="@+id/pwz"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@drawable/custom_edit_text"
+                            android:ellipsize="start"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:hint="@string/pwz"
+                            android:inputType="textPassword"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onPwzChanged(text)}"
+                            android:text="@={viewModel.pwz}" />
+                    </android.support.design.widget.TextInputLayout>
+
                     <LinearLayout
                         android:id="@+id/registerButton"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
+                        android:layout_marginTop="48dp"
                         android:layout_marginBottom="48dp"
                         android:background="@drawable/login_button"
                         android:gravity="center"
@@ -207,9 +234,6 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-
-        </LinearLayout>
-
     </android.support.v4.widget.NestedScrollView>
 
 

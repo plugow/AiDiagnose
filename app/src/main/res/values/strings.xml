@@ -17,4 +17,7 @@
     <string name="symptom_question">Co Ci dolega?</string>
     <string name="title_activity_maps">Map</string>
     <string name="specialization">Specjalizacje</string>
+    <string name="patient">Pacjent</string>
+    <string name="doctor">Doktor</string>
+    <string name="pwz">PWZ</string>
 </resources>
