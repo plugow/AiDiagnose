@@ -22,4 +22,5 @@
     <string name="pwz">PWZ</string>
     <string name="search">Szukaj</string>
     <string name="next_symptom">Następny objaw</string>
+    <string name="visitList">Lista wizyt</string>
 </resources>
