@@ -18,7 +18,8 @@ import plugow.aidiagnose.viewModel.VisitViewModel
 import javax.inject.Inject
 import plugow.aidiagnose.R.id.recyclerView
 import android.support.v7.widget.DividerItemDecoration
-
+import org.jetbrains.anko.startActivity
+import java.io.Serializable
 
 
 class VisitActivity : DaggerAppCompatActivity() {
@@ -44,7 +45,7 @@ class VisitActivity : DaggerAppCompatActivity() {
         viewModel.getVisitsList().observe(this, Observer<List<Visit>> { visitList ->
             mAdapter = VisitAdapter(visitList!!, object : VisitListener {
                 override fun onVisitClicked(pos: Int) {
-//                    viewModel.onVisitClicked(pos)
+                    startActivity<VisitDetailActivity>("visit" to visitList[pos] as Serializable)
                 }
             })
             recyclerView.adapter = mAdapter

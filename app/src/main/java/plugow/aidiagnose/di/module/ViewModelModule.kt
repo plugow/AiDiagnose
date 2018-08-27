@@ -6,10 +6,7 @@ import dagger.Binds
 import dagger.MapKey
 import dagger.Module
 import dagger.multibindings.IntoMap
-import plugow.aidiagnose.viewModel.LoginViewModel
-import plugow.aidiagnose.viewModel.MapViewModel
-import plugow.aidiagnose.viewModel.SymptomsViewModel
-import plugow.aidiagnose.viewModel.VisitViewModel
+import plugow.aidiagnose.viewModel.*
 import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
@@ -51,4 +48,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(VisitViewModel::class)
     internal abstract fun bindVisitViewModel(viewModel: VisitViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(VisitDetailViewModel::class)
+    internal abstract fun bindVisitDetailViewModel(viewModel: VisitDetailViewModel): ViewModel
 }

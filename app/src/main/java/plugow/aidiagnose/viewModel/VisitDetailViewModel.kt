@@ -1,33 +1,32 @@
 package plugow.aidiagnose.viewModel
 
 import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import io.reactivex.rxkotlin.subscribeBy
+import android.databinding.ObservableField
 import plugow.aidiagnose.model.Visit
-import plugow.aidiagnose.network.ApiService
+import plugow.aidiagnose.utils.SingleLiveEvent
 import javax.inject.Inject
 
 class VisitDetailViewModel @Inject constructor() : ViewModel() {
-    var visits:MutableLiveData<List<Visit>> = MutableLiveData()
-    val service: ApiService by lazy { ApiService() }
-    fun getVisitsList(): LiveData<List<Visit>> {
-        if (visits.value==null){
-            visits= MutableLiveData()
-            loadVisits()
-        }
-        return visits
+    var doctorTextView:ObservableField<String> = ObservableField("")
+    var placeTextView:ObservableField<String> = ObservableField("")
+    var dateTextView:ObservableField<String> = ObservableField("")
+    var commentTextView:ObservableField<String> = ObservableField("")
+    private val _okEvent = SingleLiveEvent<Any>()
+    val okEvent : LiveData<Any>
+        get() = _okEvent
 
+
+    fun setValues(visit:Visit){
+        doctorTextView.set(visit.doctor)
+        placeTextView.set(visit.place)
+        dateTextView.set(visit.date)
+        commentTextView.set(visit.comment)
     }
 
-    fun loadVisits(){
-        val visitsList = service.fetchVisits()
-                .subscribeBy (
-                        onError = {},
-                        onSuccess = {
-                            visits.value= it.body()
-                        }
-                )
+    fun okClicked(){
+        _okEvent.call()
+
 
     }
 }

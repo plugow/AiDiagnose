@@ -3,10 +3,7 @@ package plugow.aidiagnose.di.module
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import plugow.aidiagnose.di.scope.ActivityScoped
-import plugow.aidiagnose.view.LoginActivity
-import plugow.aidiagnose.view.MapsActivity
-import plugow.aidiagnose.view.SymptomsActivity
-import plugow.aidiagnose.view.VisitActivity
+import plugow.aidiagnose.view.*
 
 @Module
 abstract class ActivityBindingModule {
@@ -25,4 +22,8 @@ abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector
     internal abstract fun visitActivity(): VisitActivity
+
+    @ActivityScoped
+    @ContributesAndroidInjector
+    internal abstract fun visitDetailActivity(): VisitDetailActivity
 }
