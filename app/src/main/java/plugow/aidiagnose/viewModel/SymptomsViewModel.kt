@@ -12,6 +12,9 @@ import javax.inject.Inject
 
 class SymptomsViewModel @Inject constructor() : ViewModel() {
     var symptoms:MutableLiveData<List<Symptom>> = MutableLiveData()
+    var isClickedFromList=false
+    var chosenSymptoms: List<Symptom>? = null
+    var symptomsList:List<Symptom>?=null
     val service:ApiService by lazy {ApiService()}
     var symptomsAmount=1
     var secondVisibility:ObservableBoolean= ObservableBoolean(false)
@@ -39,17 +42,20 @@ class SymptomsViewModel @Inject constructor() : ViewModel() {
         val symptomsList = service.fetchSymptoms()
                 .subscribeBy (
                         onError = {},
-                        onSuccess = {symptoms.value= it.body()}
+                        onSuccess = {
+                            symptoms.value= it.body()
+                            symptomsList=it.body()
+                        }
                 )
 
     }
 
     fun onFirstSymptom(text: CharSequence){
-
+        filterList(text)
     }
 
     fun onSecondSymptom(text: CharSequence){
-
+        filterList(text)
     }
 
     fun secondClick(){
@@ -69,7 +75,7 @@ class SymptomsViewModel @Inject constructor() : ViewModel() {
     }
 
     fun onFourthSymptom(text: CharSequence){
-
+        filterList(text)
     }
 
     fun fourthClick(){
@@ -79,7 +85,7 @@ class SymptomsViewModel @Inject constructor() : ViewModel() {
     }
 
     fun onFifthSymptom(text: CharSequence){
-
+        filterList(text)
     }
 
     fun fifthClick(){
@@ -98,6 +104,7 @@ class SymptomsViewModel @Inject constructor() : ViewModel() {
     }
 
     fun onSymptomClicked(pos:Int){
+        isClickedFromList=true
         when(focusedEditText){
             1->firstText.set(symptoms.value!![pos].name)
             2->secondText.set(symptoms.value!![pos].name)
@@ -124,5 +131,14 @@ class SymptomsViewModel @Inject constructor() : ViewModel() {
 
     fun onFocus(pos:Int){
         focusedEditText=pos
+    }
+
+    fun filterList(text:CharSequence){
+        if (!isClickedFromList) {
+            val symptomsCopy = symptomsList?.filter { e -> e.name.contains(text) }
+            symptoms.value = symptomsCopy
+        } else {
+            symptoms.value=symptomsList
+            isClickedFromList=false}
     }
 }
