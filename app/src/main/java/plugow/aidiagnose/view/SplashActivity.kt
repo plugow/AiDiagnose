@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
 
             uiThread {
                 if (isLogged){
-                    startActivity<MapsActivity>()
+                    startActivity<MainActivity>()
                 }
                 else startActivity<LoginActivity>()
                 finish()
