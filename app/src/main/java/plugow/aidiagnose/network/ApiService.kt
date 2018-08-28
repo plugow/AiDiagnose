@@ -4,10 +4,7 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import okhttp3.RequestBody
-import plugow.aidiagnose.model.Doctor
-import plugow.aidiagnose.model.Specialization
-import plugow.aidiagnose.model.Symptom
-import plugow.aidiagnose.model.Visit
+import plugow.aidiagnose.model.*
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -51,5 +48,12 @@ class ApiService {
         return api.getDoctors(token)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    fun loginUser(body: RequestBody): Single<Response<User>> {
+        return Single.defer { api.loginUser(body)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()) }
+
     }
 }

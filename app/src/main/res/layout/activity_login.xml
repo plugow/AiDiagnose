@@ -26,32 +26,55 @@
                 android:layout_marginStart="32dp"
                 android:paddingBottom="100dp">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="54dp"
-                    android:src="@drawable/big_logo"
+
+                <RelativeLayout
+                    android:id="@+id/logoProgressGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent" >
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="54dp"
+                        android:src="@drawable/big_logo"
+                        />
+                    <ProgressBar
+                        android:visibility="@{viewModel.progressVisibility ? View.VISIBLE : View.GONE}"
+                        android:id="@+id/loginProgressBar"
+                        android:layout_marginTop="54dp"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_centerInParent="true"/>
+                </RelativeLayout>
 
-
-
-
+                <TextView
+                    android:visibility="@{viewModel.errorVisibility ? View.VISIBLE : View.GONE}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.errorMessage}"
+                    android:textColor="@color/red"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/logoProgressGroup"/>
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="100dp"
+                    android:layout_marginTop="50dp"
                     android:text="@string/pleaseLogin"
                     android:textAllCaps="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    app:layout_constraintTop_toBottomOf="@+id/logoProgressGroup" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/nameError"
@@ -66,6 +89,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView">
 
                     <EditText
+                        android:enabled="@{viewModel.emailEnabled}"
                         android:id="@+id/usernameEditText"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -93,6 +117,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/nameError">
 
                     <EditText
+                        android:enabled="@{viewModel.passEnabled}"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/custom_edit_text"
@@ -104,6 +129,7 @@
                         android:text="@={viewModel.password}"
                         android:textAllCaps="true" />
                 </android.support.design.widget.TextInputLayout>
+
 
                 <LinearLayout
                     android:id="@+id/forgottenPassword"
@@ -131,6 +157,7 @@
 
 
                 <LinearLayout
+                    android:enabled="@{viewModel.loginEnabled}"
                     android:id="@+id/loginButton"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

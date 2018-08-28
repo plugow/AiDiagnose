@@ -1,13 +1,13 @@
 package plugow.aidiagnose.network
 
 import io.reactivex.Single
-import plugow.aidiagnose.model.Doctor
-import plugow.aidiagnose.model.Specialization
-import plugow.aidiagnose.model.Symptom
-import plugow.aidiagnose.model.Visit
+import okhttp3.RequestBody
+import plugow.aidiagnose.model.*
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.POST
 
 interface api {
 
@@ -22,4 +22,7 @@ interface api {
 
     @GET("getVisits")
     fun getVisits(@Header("Authorization") token: String?): Single<Response<List<Visit>>>
+
+    @POST("auth/login")
+    fun loginUser(@Body params: RequestBody): Single<Response<User>>
 }

@@ -26,4 +26,10 @@
     <string name="ok">OK</string>
     <string name="notification">Zgłoszenie</string>
     <string name="add_comment">Dodaj komentarz...</string>
+    <string name="invalid_empty_pass">Niepoprawne hasło</string>
+    <string name="invalid_user">Niepoprawny email</string>
+    <string name="account_not_found">Konto nie istnieje</string>
+    <string name="invalid_data">Błędne dane logowania</string>
+    <string name="account_not_activated">Konto jeszcze nieaktywne</string>
+    <string name="error">Error</string>
 </resources>
