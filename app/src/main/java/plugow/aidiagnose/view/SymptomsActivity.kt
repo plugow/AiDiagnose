@@ -35,6 +35,8 @@ class SymptomsActivity : DaggerAppCompatActivity() {
         // use a linear layout manager
         layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         viewModel.getSymptomList().observe(this, Observer<List<Symptom>> { companyList ->
             mAdapter = SymptomAdapter(companyList!!, object : SymptomListener {
