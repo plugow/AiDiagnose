@@ -19,7 +19,7 @@
             android:label=""
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity android:name=".view.SymptomsActivity"></activity>
+        <activity android:name=".view.SymptomsActivity" />
         <activity android:name=".view.MapsActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -40,7 +40,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.VisitDetailActivity"></activity>
+        <activity android:name=".view.VisitDetailActivity" />
+        <activity android:name=".view.NotificationActivity"></activity>
     </application>
 
 </manifest>

@@ -24,4 +24,6 @@
     <string name="next_symptom">Następny objaw</string>
     <string name="visitList">Lista wizyt</string>
     <string name="ok">OK</string>
+    <string name="notification">Zgłoszenie</string>
+    <string name="add_comment">Dodaj komentarz...</string>
 </resources>

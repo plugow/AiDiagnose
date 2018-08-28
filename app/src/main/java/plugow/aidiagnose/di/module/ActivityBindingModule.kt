@@ -26,4 +26,8 @@ abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector
     internal abstract fun visitDetailActivity(): VisitDetailActivity
+
+    @ActivityScoped
+    @ContributesAndroidInjector
+    internal abstract fun notificationActivity(): NotificationActivity
 }

@@ -53,4 +53,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(VisitDetailViewModel::class)
     internal abstract fun bindVisitDetailViewModel(viewModel: VisitDetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NotificationViewModel::class)
+    internal abstract fun bindNotificationViewModel(viewModel: NotificationViewModel): ViewModel
 }
