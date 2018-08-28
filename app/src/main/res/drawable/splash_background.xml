@@ -4,12 +4,12 @@
     <item android:drawable="@color/white"
         android:gravity="fill_horizontal|fill_vertical"/>
 
-    <!--<item>-->
-        <!--<bitmap-->
-            <!--android:src="@drawable/logo"-->
-            <!--android:gravity="center"-->
-            <!--/>-->
-    <!--</item>-->
+    <item>
+        <bitmap
+            android:src="@mipmap/ic_launcher"
+            android:gravity="center"
+            />
+    </item>
 
 
 
