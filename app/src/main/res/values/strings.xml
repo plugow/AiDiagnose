@@ -47,4 +47,5 @@
     <string name="openDrawer">open</string>
     <string name="closeDrawer">close</string>
     <string name="send_visit">Umów wizytę</string>
+    <string name="notification_list">Lista zgłoszeń</string>
 </resources>
