@@ -1,23 +1,24 @@
 package plugow.aidiagnose.view
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.app.FragmentManager
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import org.jetbrains.anko.startActivity
 import plugow.aidiagnose.R
+import plugow.aidiagnose.db.DbRepository
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     lateinit var mFragmentManager: FragmentManager
     private var fragmentId: Int = 0
+    val repo by lazy { DbRepository() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +46,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         drawer_layout!!.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
+        val user=repo.user
+        val navHeader=nav_view.getHeaderView(0)
+        val navHeaderTitle=navHeader.findViewById<TextView>(R.id.navHeaderText)
+        navHeaderTitle.text="${user?.firstName} ${user?.lastName}"
     }
+
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -70,10 +76,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
 
-    private fun navigateFun(fragmentId: Int) {
-        when (fragmentId) {
+    private fun navigateFun(id: Int) {
+        when (id) {
             1-> startActivity<VisitActivity>()
             2-> startActivity<VisitActivity>()
         }
+        fragmentId=0
     }
 }

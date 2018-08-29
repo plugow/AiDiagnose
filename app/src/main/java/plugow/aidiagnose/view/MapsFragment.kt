@@ -13,9 +13,11 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_maps.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 import plugow.aidiagnose.R
 import plugow.aidiagnose.databinding.FragmentMapsBinding
 import plugow.aidiagnose.model.Doctor
@@ -24,9 +26,13 @@ import plugow.aidiagnose.viewModel.MapViewModel
 
 
 
-class MapsFragment : Fragment(), OnMapReadyCallback {
-    private lateinit var mMap: GoogleMap
-    var mapFragment: SupportMapFragment?=null
+class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
+    override fun onInfoWindowClick(p0: Marker?) {
+        context?.toast("Works")
+    }
+
+    private var mMap: GoogleMap?=null
+    lateinit var mapFragment: SupportMapFragment
     private val viewModel by lazy{
         ViewModelProviders.of(this).get(MapViewModel::class.java)
     }
@@ -38,10 +44,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         val binding= DataBindingUtil.inflate<FragmentMapsBinding>(inflater,R.layout.fragment_maps,null,false)
         binding.viewModel=viewModel
 
-        if (mapFragment == null) {
-            mapFragment = SupportMapFragment.newInstance()
-            mapFragment!!.getMapAsync(this)
-        }
+        mapFragment = SupportMapFragment.newInstance()
+        mapFragment.getMapAsync(this)
         val transaction = childFragmentManager.beginTransaction()
         // R.id.map is a layout
         transaction.replace(R.id.map, mapFragment).commit()
@@ -54,10 +58,19 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
-        // Add a marker in Sydney and move the camera
+        mMap!!.uiSettings.isRotateGesturesEnabled = false
         val krakow = LatLng(50.067599, 19.974942)
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(krakow, 14.5.toFloat()))
+        mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(krakow, 14.5.toFloat()))
+        mMap!!.setOnInfoWindowClickListener(this)
+
+        viewModel.getDoctorList().observe(this, android.arch.lifecycle.Observer<List<Doctor>> { doctors ->
+            mMap!!.clear()
+            markers= mutableListOf()
+            doctors?.forEach { doc ->
+                val pos=LatLng(doc.longitude,doc.latitude)
+                mMap!!.addMarker(MarkerOptions().position(pos).title(doc.firstName).icon(BitmapDescriptorFactory.fromResource(R.drawable.laska)))
+            }
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -67,15 +80,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             bottomSheetFragment.show(activity?.supportFragmentManager,"bottom sheet")
         }
         symptomQuestionTextView.setOnClickListener { context?.startActivity<SymptomsActivity>() }
-        viewModel.getDoctorList().observe(this, android.arch.lifecycle.Observer<List<Doctor>> { doctors ->
-            mMap.clear()
-            markers= mutableListOf()
-            doctors?.forEach { doc ->
-                val pos=LatLng(doc.longitude,doc.latitude)
-                mMap.addMarker(MarkerOptions().position(pos).title(doc.firstName).icon(BitmapDescriptorFactory.fromResource(R.drawable.laska)))
-            }
 
-        })
 
     }
 
