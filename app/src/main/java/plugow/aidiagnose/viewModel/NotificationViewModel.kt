@@ -21,7 +21,7 @@ class NotificationViewModel @Inject constructor() : ViewModel() {
     }
 
     fun loadVisits(){
-        val visitsList = service.fetchVisits()
+        val visitsList = service.fetchVisitsForDoctor()
                 .subscribeBy (
                         onError = {},
                         onSuccess = {

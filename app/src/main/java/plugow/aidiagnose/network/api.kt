@@ -23,6 +23,9 @@ interface api {
     @GET("getVisits")
     fun getVisits(@Header("Authorization") token: String?): Single<Response<List<Visit>>>
 
+    @GET("getVisitsForDoctor")
+    fun getVisitsForDoctor(@Header("Authorization") token: String?): Single<Response<List<Visit>>>
+
     @POST("auth/login")
     fun loginUser(@Body params: RequestBody): Single<Response<User>>
 }

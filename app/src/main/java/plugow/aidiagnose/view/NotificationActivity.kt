@@ -17,9 +17,12 @@ import plugow.aidiagnose.R
 import plugow.aidiagnose.databinding.ActivityNotificationBinding
 import plugow.aidiagnose.databinding.ActivityVisitBinding
 import plugow.aidiagnose.model.Visit
+import plugow.aidiagnose.recycler.NotificationAdapter
+import plugow.aidiagnose.recycler.NotificationListener
 import plugow.aidiagnose.recycler.VisitAdapter
 import plugow.aidiagnose.recycler.VisitListener
 import plugow.aidiagnose.view.dialogFragment.NotificationDetailSheetFragment
+import plugow.aidiagnose.viewModel.NotificationViewModel
 import plugow.aidiagnose.viewModel.VisitViewModel
 import java.io.Serializable
 import javax.inject.Inject
@@ -33,7 +36,7 @@ class NotificationActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding= DataBindingUtil.setContentView<ActivityNotificationBinding>(this,R.layout.activity_notification)
-        val viewModel= ViewModelProviders.of(this, viewModelFactory)[VisitViewModel::class.java]
+        val viewModel= ViewModelProviders.of(this, viewModelFactory)[NotificationViewModel::class.java]
         binding.viewModel=viewModel
 
         recyclerView.setHasFixedSize(true)
@@ -45,7 +48,7 @@ class NotificationActivity : DaggerAppCompatActivity() {
         recyclerView.addItemDecoration(dividerItemDecoration)
 
         viewModel.getVisitsList().observe(this, Observer<List<Visit>> { visitList ->
-            mAdapter = VisitAdapter(visitList!!, object : VisitListener {
+            mAdapter = NotificationAdapter(visitList!!, object : NotificationListener {
                 override fun onVisitClicked(pos: Int) {
                     val detailFragment= NotificationDetailSheetFragment.newInstance()
                     detailFragment.show(supportFragmentManager,"bottom sheet")
