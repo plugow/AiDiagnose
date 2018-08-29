@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
 
             uiThread {
                 if (isLogged){
-                    startActivity<NotificationActivity>()
+                    startActivity<MainActivity>()
                 }
                 else startActivity<LoginActivity>()
                 finish()
