@@ -22,13 +22,15 @@ import plugow.aidiagnose.R
 import plugow.aidiagnose.databinding.FragmentMapsBinding
 import plugow.aidiagnose.model.Doctor
 import plugow.aidiagnose.view.dialogFragment.MapBottomSheetFragment
+import plugow.aidiagnose.view.dialogFragment.SendVisitBottomSheetFragment
 import plugow.aidiagnose.viewModel.MapViewModel
 
 
 
 class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
     override fun onInfoWindowClick(p0: Marker?) {
-        context?.toast("Works")
+        val sendVisitFragment= SendVisitBottomSheetFragment.newInstance()
+        sendVisitFragment.show(activity?.supportFragmentManager,"bottom sheet")
     }
 
     private var mMap: GoogleMap?=null
