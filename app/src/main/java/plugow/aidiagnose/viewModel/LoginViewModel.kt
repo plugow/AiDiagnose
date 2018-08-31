@@ -160,7 +160,7 @@ class LoginViewModel @Inject constructor(application:Application) : AndroidViewM
 
     fun onLogin(responseCode: Int?, user: Any?, error: String?)
     {
-
+        progressVisibility.set(false)
         when(responseCode){
             in 200 .. 299 -> {
                 val usr=user!! as User
@@ -168,6 +168,10 @@ class LoginViewModel @Inject constructor(application:Application) : AndroidViewM
                 _loginEvent.value=LoginEnum.LOGIN
             }
             401 ->{
+                emailEnabled.set(true)
+                passEnabled.set(true)
+                loginEnabled.set(true)
+                errorVisibility.set(true)
                 val obj = JSONObject(error)
                 val code = obj.getString("code")
                 if (code.equals("E_WRONG_PASSWORD")) {
@@ -182,10 +186,18 @@ class LoginViewModel @Inject constructor(application:Application) : AndroidViewM
                 }
             }
             406 ->{
+                emailEnabled.set(true)
+                passEnabled.set(true)
+                loginEnabled.set(true)
+                errorVisibility.set(true)
                 errorMessage.set(context.getString(R.string.account_not_activated))
                 _loginEvent.value=LoginEnum.ERROR
             }
             else ->{
+                emailEnabled.set(true)
+                passEnabled.set(true)
+                loginEnabled.set(true)
+                errorVisibility.set(true)
                 _loginEvent.value=LoginEnum.ERROR
                 errorMessage.set(context.getString(R.string.error))
             }

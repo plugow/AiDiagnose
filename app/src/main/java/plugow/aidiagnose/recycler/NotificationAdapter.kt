@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import plugow.aidiagnose.R
 import plugow.aidiagnose.model.Visit
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NotificationAdapter(dataSet:List<Visit>, listener: NotificationListener) :  RecyclerView.Adapter<NotificationViewHolder>() {
     private val values: List<Visit> = dataSet
@@ -24,6 +26,7 @@ class NotificationAdapter(dataSet:List<Visit>, listener: NotificationListener) :
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
         val visit=values[position]
         holder.doctorName.text=visit.patient
-        holder.visitDate.text=visit.date
+        val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        holder.visitDate.text=df.format(visit.date)
     }
 }

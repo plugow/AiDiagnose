@@ -5,6 +5,8 @@ import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
 import plugow.aidiagnose.model.Visit
 import plugow.aidiagnose.utils.SingleLiveEvent
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 class VisitDetailViewModel @Inject constructor() : ViewModel() {
@@ -18,9 +20,10 @@ class VisitDetailViewModel @Inject constructor() : ViewModel() {
 
 
     fun setValues(visit:Visit){
+        val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         doctorTextView.set(visit.doctor)
         placeTextView.set(visit.place)
-        dateTextView.set(visit.date)
+        dateTextView.set(df.format(visit.date))
         commentTextView.set(visit.comment)
     }
 

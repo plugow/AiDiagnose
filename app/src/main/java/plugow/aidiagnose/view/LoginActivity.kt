@@ -36,8 +36,7 @@ class LoginActivity : DaggerAppCompatActivity() {
                 }
                 LoginEnum.LOGIN -> {startActivity(intentFor<MapsActivity>().setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))}
                 LoginEnum.ERROR -> {
-                    bottomSheetBehavior.isHideable=false
-                    bottomSheetBehavior.state=BottomSheetBehavior.STATE_COLLAPSED
+
                 }
             }
 

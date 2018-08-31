@@ -131,29 +131,29 @@
                 </android.support.design.widget.TextInputLayout>
 
 
-                <LinearLayout
-                    android:id="@+id/forgottenPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/loginButton">
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/forgottenPassword"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:gravity="center_horizontal|center_vertical"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--app:layout_constraintStart_toStartOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/loginButton">-->
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/password_icon" />
+                    <!--<ImageView-->
+                        <!--android:layout_width="20dp"-->
+                        <!--android:layout_height="20dp"-->
+                        <!--android:src="@drawable/password_icon" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/forgotten"
-                        android:textColor="@color/colorPrimary" />
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/forgotten"-->
+                        <!--android:textColor="@color/colorPrimary" />-->
 
-                </LinearLayout>
+                <!--</LinearLayout>-->
 
 
                 <LinearLayout
@@ -161,7 +161,7 @@
                     android:id="@+id/loginButton"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="64dp"
+                    android:layout_marginTop="84dp"
                     android:background="@drawable/login_button"
                     android:gravity="center"
                     android:onClick="@{() -> viewModel.loginButtonListener()}"

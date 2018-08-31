@@ -2,6 +2,7 @@ package plugow.aidiagnose.model
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
+import java.util.*
 
 data class Visit(@SerializedName("id") val id:Int,
                  @SerializedName("status") val status:String,
@@ -9,6 +10,6 @@ data class Visit(@SerializedName("id") val id:Int,
                  @SerializedName("doctor") val doctor:String,
                  @SerializedName("patient") val patient:String,
                  @SerializedName("place") val place:String,
-                 @SerializedName("date") val date:String,
+                 @SerializedName("date") val date:Date,
                  @SerializedName("comment") val comment:String
                  ) : Serializable
