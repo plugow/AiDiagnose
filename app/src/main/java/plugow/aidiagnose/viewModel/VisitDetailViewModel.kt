@@ -20,7 +20,7 @@ class VisitDetailViewModel @Inject constructor() : ViewModel() {
 
 
     fun setValues(visit:Visit){
-        val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val df = SimpleDateFormat("d MMMM yyyy HH:mm", Locale.getDefault())
         doctorTextView.set(visit.doctor)
         placeTextView.set(visit.place)
         dateTextView.set(df.format(visit.date))
