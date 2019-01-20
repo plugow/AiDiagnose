@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiService {
     val api by lazy { Retrofit.Builder()
-            .baseUrl("http://192.168.0.104:1337/")
+            .baseUrl("http://192.168.0.105:1337/")
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -36,7 +36,7 @@ class ApiService {
 
     fun fetchVisitsForDoctor(): Single<Response<List<Visit>>>{
 //        val user : User?= repository.getUserByRole(2)
-        val token = "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImNyZWF0ZWRBdCI6MTUzNTQ2MTE2NTkyMCwidXBkYXRlZEF0IjoxNTM1NDYxMTcwMzA1LCJpZCI6MywiZmlyc3ROYW1lIjoiRG9jdG9yMiIsImxhc3ROYW1lIjoiRG9jdG9yIiwiZW1haWwiOiJkb2N0b3IyQGRvY3Rvci5wbCIsImlzQWN0aXZlIjp0cnVlLCJ0ZW1wb3JhcnlQYXNzd29yZCI6IiIsInRlbXBvcmFyeVBhc3N3b3JkRXhwaXJhdGlvblRpbWVzdGFtcCI6bnVsbCwicm9sZSI6MiwiZG9jdG9yIjoyfSwiaWF0IjoxNTM1NTUwNjc1LCJleHAiOjE1MzgxNDI2NzUsImF1ZCI6InBsdWdvdyIsImlzcyI6InBsdWdvdyJ9.bSznlWbN5c9M2btdIVcodOFOdIEcknY1-J4Yvbm1FPs"
+        val token = "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImNyZWF0ZWRBdCI6MTU0NzA2MDA5MjgyOCwidXBkYXRlZEF0IjoxNTQ3MDYwMDk3MTU5LCJpZCI6MiwiZmlyc3ROYW1lIjoiRG9jdG9yIiwibGFzdE5hbWUiOiJEb2N0b3IiLCJlbWFpbCI6ImRvY3RvckBkb2N0b3IucGwiLCJpc0FjdGl2ZSI6dHJ1ZSwidGVtcG9yYXJ5UGFzc3dvcmQiOiIiLCJ0ZW1wb3JhcnlQYXNzd29yZEV4cGlyYXRpb25UaW1lc3RhbXAiOm51bGwsInJvbGUiOjIsImRvY3RvciI6MX0sImlhdCI6MTU0NzA2MDUxNiwiZXhwIjoxNTQ5NjUyNTE2LCJhdWQiOiJwbHVnb3ciLCJpc3MiOiJwbHVnb3cifQ.JkHQYpNvol1DuwUY2PVflYq2pFm2TO5XOBOa6xaOVks"
         return api.getVisitsForDoctor(token)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

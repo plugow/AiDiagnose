@@ -15,7 +15,7 @@ class NotificationAdapter(dataSet:List<Visit>, listener: NotificationListener) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
         val inflater = LayoutInflater.from(
                 parent.context)
-        val v = inflater.inflate(R.layout.visit_item, parent, false)
+        val v = inflater.inflate(R.layout.notification_item, parent, false)
         return NotificationViewHolder(v,mListener)
     }
 
