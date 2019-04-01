@@ -13,6 +13,10 @@ abstract class ActivityBindingModule {
 
     @ActivityScoped
     @ContributesAndroidInjector
+    internal abstract fun mainActivity(): MainActivity
+
+    @ActivityScoped
+    @ContributesAndroidInjector
     internal abstract fun symptomsActivity(): SymptomsActivity
 
     @ActivityScoped
