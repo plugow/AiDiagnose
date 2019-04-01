@@ -8,8 +8,12 @@ import plugow.aidiagnose.R
 import plugow.aidiagnose.model.Specialization
 import plugow.aidiagnose.model.Symptom
 
-class SpecializationAdapter(private val dataSet:List<Specialization>, private val listener: SpecializationListener) :  RecyclerView.Adapter<SpecializationViewHolder>() {
-    private val values: List<Specialization> = dataSet
+class SpecializationAdapter(listener: SpecializationListener) :  RecyclerView.Adapter<SpecializationViewHolder>(), BindableAdapter<Specialization> {
+    private var values: ArrayList<Specialization> = arrayListOf()
+    override fun setData(items: List<Specialization>) {
+        values = items as ArrayList<Specialization>
+        notifyDataSetChanged()
+    }
     val mListener=listener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpecializationViewHolder {

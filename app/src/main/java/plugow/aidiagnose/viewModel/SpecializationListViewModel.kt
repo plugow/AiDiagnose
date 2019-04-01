@@ -21,6 +21,9 @@ class SpecializationListViewModel @Inject constructor(val api: Api, val sharedUs
         return specializations
 
     }
+    init {
+        loadSpecializations()
+    }
 
     fun loadSpecializations(){
         val specializationList = api.getSpecializations(sharedUseCase.token)

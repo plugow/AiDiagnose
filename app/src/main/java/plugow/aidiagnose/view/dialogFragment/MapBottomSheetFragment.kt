@@ -45,15 +45,15 @@ class MapBottomSheetFragment : BottomSheetDialogFragment() {
         // use a linear layout manager
         layoutManager = LinearLayoutManager(context)
         recyclerBottomSheet.layoutManager = layoutManager
-        viewModel.getSymptomList().observe(this, Observer<List<Specialization>> { companyList ->
-            mAdapter = SpecializationAdapter(companyList!!, object : SpecializationListener {
-                override fun onSpecializationClicked(pos: Int) {
+
+        mAdapter = SpecializationAdapter(object : SpecializationListener {
+            override fun onSpecializationClicked(pos: Int) {
 //                    startActivity<PaymentSelectionActivity>("companyServerId" to companyList[pos].serverId)
-                    context?.toast("działa")
-                }
-            })
-            recyclerBottomSheet.adapter = mAdapter
+                context?.toast("działa")
+            }
         })
+        recyclerBottomSheet.adapter = mAdapter
+
     }
 
 

@@ -8,8 +8,12 @@ import plugow.aidiagnose.model.Visit
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NotificationAdapter(dataSet:List<Visit>, listener: NotificationListener) :  RecyclerView.Adapter<NotificationViewHolder>() {
-    private val values: List<Visit> = dataSet
+class NotificationAdapter(listener: NotificationListener) :  RecyclerView.Adapter<NotificationViewHolder>(), BindableAdapter<Visit> {
+    private var values: ArrayList<Visit> = arrayListOf()
+    override fun setData(items: List<Visit>) {
+        values = items as ArrayList<Visit>
+        notifyDataSetChanged()
+    }
     val mListener=listener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {

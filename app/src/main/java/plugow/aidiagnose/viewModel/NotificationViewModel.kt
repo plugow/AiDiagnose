@@ -20,6 +20,9 @@ class NotificationViewModel @Inject constructor(val api: Api, val sharedUseCase:
 
     }
 
+    init {
+        loadVisits()
+    }
     fun loadVisits(){
         val visitsList = api.getVisitsForDoctor(sharedUseCase.token)
                 .subscribeBy (

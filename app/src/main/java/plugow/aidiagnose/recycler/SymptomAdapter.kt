@@ -7,8 +7,12 @@ import android.view.ViewGroup
 import plugow.aidiagnose.R
 import plugow.aidiagnose.model.Symptom
 
-class SymptomAdapter(private val dataSet:List<Symptom>, private val listener: SymptomListener) :  RecyclerView.Adapter<SymptomViewHolder>() {
-    private val values: List<Symptom> = dataSet
+class SymptomAdapter(listener: SymptomListener) :  RecyclerView.Adapter<SymptomViewHolder>(), BindableAdapter<Symptom> {
+    private var values: ArrayList<Symptom> = arrayListOf()
+    override fun setData(items: List<Symptom>) {
+        values = items as ArrayList<Symptom>
+        notifyDataSetChanged()
+    }
     val mListener=listener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SymptomViewHolder {

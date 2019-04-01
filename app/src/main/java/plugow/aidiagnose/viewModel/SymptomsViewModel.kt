@@ -28,6 +28,9 @@ class SymptomsViewModel @Inject constructor(val api: Api, val sharedUseCase: Sha
     var fourthText:ObservableField<String> = ObservableField("")
     var fifthText:ObservableField<String> = ObservableField("")
 
+    init {
+        loadSymptoms()
+    }
 
     fun getSymptomList(): LiveData<List<Symptom>> {
         if (symptoms.value==null){
