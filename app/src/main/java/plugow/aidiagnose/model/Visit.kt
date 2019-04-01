@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 import java.util.*
 
-data class Visit(@SerializedName("id") val id:Int,
+class Visit(@SerializedName("id") val id:Int,
                  @SerializedName("status") val status:String,
                  @SerializedName("isRead") val isRead:Boolean,
                  @SerializedName("doctor") val doctor:String,

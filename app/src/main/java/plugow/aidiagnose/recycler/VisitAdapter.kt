@@ -1,11 +1,6 @@
 package plugow.aidiagnose.recycler
 
-import android.app.Application
-import android.graphics.Color
 import android.graphics.Typeface
-import android.graphics.drawable.ColorDrawable
-import android.support.v4.content.ContextCompat
-import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,8 +9,12 @@ import plugow.aidiagnose.model.Visit
 import java.text.SimpleDateFormat
 import java.util.*
 
-class VisitAdapter(dataSet:List<Visit>, listener: VisitListener) :  RecyclerView.Adapter<VisitViewHolder>() {
-    private val values: List<Visit> = dataSet
+class VisitAdapter(listener: VisitListener) :  RecyclerView.Adapter<VisitViewHolder>(), BindableAdapter<Visit> {
+    private var values: ArrayList<Visit> = arrayListOf()
+    override fun setData(items: List<Visit>) {
+        values = items as ArrayList<Visit>
+        notifyDataSetChanged()
+    }
     val mListener=listener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VisitViewHolder {

@@ -8,7 +8,7 @@ import com.raizlabs.android.dbflow.structure.BaseModel
 import plugow.aidiagnose.db.AiDatabase
 
 @Table(database = AiDatabase::class)
-data class User(
+class User(
         @PrimaryKey(autoincrement = true)
         @SerializedName("id")
         @Column(name = "id")

@@ -11,6 +11,9 @@ import javax.inject.Inject
 
 class VisitViewModel @Inject constructor(val api: Api, val sharedUseCase: SharedUseCase) : ViewModel() {
     var visits:MutableLiveData<List<Visit>> = MutableLiveData()
+    init {
+        loadVisits()
+    }
     fun getVisitsList(): LiveData<List<Visit>> {
         if (visits.value==null){
             visits= MutableLiveData()
@@ -30,4 +33,6 @@ class VisitViewModel @Inject constructor(val api: Api, val sharedUseCase: Shared
                 )
 
     }
+
+    fun getVisitById(id:Int) = visits.value?.get(id)
 }
