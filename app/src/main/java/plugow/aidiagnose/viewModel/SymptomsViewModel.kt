@@ -5,6 +5,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
+import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import plugow.aidiagnose.model.Symptom
 import plugow.aidiagnose.network.Api
@@ -12,6 +13,7 @@ import plugow.aidiagnose.useCase.SharedUseCase
 import javax.inject.Inject
 
 class SymptomsViewModel @Inject constructor(val api: Api, val sharedUseCase: SharedUseCase) : ViewModel() {
+    private lateinit var disposable: Disposable
     var symptoms:MutableLiveData<List<Symptom>> = MutableLiveData()
     var isClickedFromList=false
     var chosenSymptoms: List<Symptom>? = null
@@ -42,7 +44,7 @@ class SymptomsViewModel @Inject constructor(val api: Api, val sharedUseCase: Sha
     }
 
     fun loadSymptoms(){
-        val symptomsList = api.getSymptoms(sharedUseCase.token)
+        disposable = api.getSymptoms(sharedUseCase.token)
                 .subscribeBy (
                         onError = {},
                         onSuccess = {
@@ -143,5 +145,10 @@ class SymptomsViewModel @Inject constructor(val api: Api, val sharedUseCase: Sha
         } else {
             symptoms.value=symptomsList
             isClickedFromList=false}
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable.dispose()
     }
 }

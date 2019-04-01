@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
+import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import org.json.JSONObject
 import plugow.aidiagnose.R
@@ -16,7 +17,7 @@ import plugow.aidiagnose.utils.SingleLiveEvent
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(val ctx:Context, val api: Api, val sharedUseCase: SharedUseCase) : ViewModel() {
-
+    private lateinit var disposable: Disposable
     val succesfullVisibility = ObservableField<Boolean>()
     val registerVisibility = ObservableField<Boolean>(true)
     val pwzVisibility = ObservableField<Boolean>(false)
@@ -65,7 +66,7 @@ class LoginViewModel @Inject constructor(val ctx:Context, val api: Api, val shar
             passEnabled.set(false)
             loginEnabled.set(false)
             _loginEvent.value = LoginEnum.LOADING
-            api.loginUser(email.get()!!, password.get()!!)
+            disposable=api.loginUser(email.get()!!, password.get()!!)
                     .subscribeBy(
                             onSuccess = {onLogin(it.code(),it.body(), it.errorBody()?.string())},
                             onError = {_loginEvent.value=LoginEnum.ERROR}
@@ -196,6 +197,11 @@ class LoginViewModel @Inject constructor(val ctx:Context, val api: Api, val shar
                 errorMessage.set(ctx.getString(R.string.error))
             }
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable.dispose()
     }
 
 }

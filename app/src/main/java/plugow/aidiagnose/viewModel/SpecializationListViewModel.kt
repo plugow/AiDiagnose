@@ -3,6 +3,7 @@ package plugow.aidiagnose.viewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import plugow.aidiagnose.model.Specialization
 import plugow.aidiagnose.network.Api
@@ -10,6 +11,7 @@ import plugow.aidiagnose.useCase.SharedUseCase
 import javax.inject.Inject
 
 class SpecializationListViewModel @Inject constructor(val api: Api, val sharedUseCase: SharedUseCase) : ViewModel() {
+    private lateinit var disposable: Disposable
     var specializations: MutableLiveData<List<Specialization>> = MutableLiveData()
 
 
@@ -26,11 +28,16 @@ class SpecializationListViewModel @Inject constructor(val api: Api, val sharedUs
     }
 
     fun loadSpecializations(){
-        val specializationList = api.getSpecializations(sharedUseCase.token)
+        disposable = api.getSpecializations(sharedUseCase.token)
                 .subscribeBy (
                         onError = {},
                         onSuccess = {specializations.value= it.body()}
                 )
 
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable.dispose()
     }
 }

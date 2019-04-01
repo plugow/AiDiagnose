@@ -3,6 +3,7 @@ package plugow.aidiagnose.viewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import plugow.aidiagnose.model.Visit
 import plugow.aidiagnose.network.Api
@@ -10,6 +11,7 @@ import plugow.aidiagnose.useCase.SharedUseCase
 import javax.inject.Inject
 
 class VisitViewModel @Inject constructor(val api: Api, val sharedUseCase: SharedUseCase) : ViewModel() {
+    private lateinit var disposable: Disposable
     var visits:MutableLiveData<List<Visit>> = MutableLiveData()
     init {
         loadVisits()
@@ -24,7 +26,7 @@ class VisitViewModel @Inject constructor(val api: Api, val sharedUseCase: Shared
     }
 
     fun loadVisits(){
-        val visitsList = api.getVisits(sharedUseCase.token)
+        disposable = api.getVisits(sharedUseCase.token)
                 .subscribeBy (
                         onError = {},
                         onSuccess = {
@@ -35,4 +37,9 @@ class VisitViewModel @Inject constructor(val api: Api, val sharedUseCase: Shared
     }
 
     fun getVisitById(id:Int) = visits.value?.get(id)
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable.dispose()
+    }
 }
