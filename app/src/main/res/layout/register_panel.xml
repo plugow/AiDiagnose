@@ -90,7 +90,7 @@
                             android:gravity="center_horizontal|center_vertical"
                             android:hint="@string/email"
                             android:inputType="textEmailAddress"
-                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onEmailTextChanged(text)}"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onEmailTextChanged()}"
                             android:text="@={viewModel.registerEmail}" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -112,7 +112,7 @@
                             android:gravity="center_horizontal|center_vertical"
                             android:hint="@string/first_name"
                             android:inputType="text"
-                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onFirstNameTextChanged(text)}"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onFirstNameTextChanged()}"
                             android:text="@={viewModel.firstName}" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -134,7 +134,7 @@
                             android:gravity="center_horizontal|center_vertical"
                             android:hint="@string/last_name"
                             android:inputType="text"
-                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onLastNameTextChanged(text)}"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onLastNameTextChanged()}"
                             android:text="@={viewModel.lastName}" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -156,7 +156,7 @@
                             android:gravity="center_horizontal|center_vertical"
                             android:hint="@string/enter_password"
                             android:inputType="textPassword"
-                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onFirstPassTextChanged(text)}"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onFirstPassTextChanged()}"
                             android:text="@={viewModel.registerPassword}" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -177,7 +177,7 @@
                             android:gravity="center_horizontal|center_vertical"
                             android:hint="@string/repeat_password"
                             android:inputType="textPassword"
-                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onSecondPassTextChanged(text)}"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onSecondPassTextChanged()}"
                             android:text="@={viewModel.registerRepeatPassword}" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -200,7 +200,7 @@
                             android:gravity="center_horizontal|center_vertical"
                             android:hint="@string/pwz"
                             android:inputType="textPassword"
-                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onPwzChanged(text)}"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onPwzChanged()}"
                             android:text="@={viewModel.pwz}" />
                     </android.support.design.widget.TextInputLayout>
 

@@ -98,7 +98,7 @@
                         android:gravity="center_horizontal|center_vertical"
                         android:hint="@string/username"
                         android:inputType="textEmailAddress"
-                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onUsernameTextChanged(text)}"
+                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onUsernameTextChanged()}"
                         android:text="@={viewModel.email}" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -125,7 +125,7 @@
                         android:gravity="center_horizontal|center_vertical"
                         android:hint="@string/password"
                         android:inputType="textPassword"
-                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordTextChanged(text)}"
+                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordTextChanged()}"
                         android:text="@={viewModel.password}"
                         android:textAllCaps="true" />
                 </android.support.design.widget.TextInputLayout>

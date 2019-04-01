@@ -7,15 +7,15 @@ import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
 import io.reactivex.rxkotlin.subscribeBy
 import plugow.aidiagnose.model.Symptom
-import plugow.aidiagnose.network.ApiService
+import plugow.aidiagnose.network.Api
+import plugow.aidiagnose.useCase.SharedUseCase
 import javax.inject.Inject
 
-class SymptomsViewModel @Inject constructor() : ViewModel() {
+class SymptomsViewModel @Inject constructor(val api: Api, val sharedUseCase: SharedUseCase) : ViewModel() {
     var symptoms:MutableLiveData<List<Symptom>> = MutableLiveData()
     var isClickedFromList=false
     var chosenSymptoms: List<Symptom>? = null
     var symptomsList:List<Symptom>?=null
-    val service:ApiService by lazy {ApiService()}
     var symptomsAmount=1
     var secondVisibility:ObservableBoolean= ObservableBoolean(false)
     var thirdVisibility:ObservableBoolean= ObservableBoolean(false)
@@ -39,7 +39,7 @@ class SymptomsViewModel @Inject constructor() : ViewModel() {
     }
 
     fun loadSymptoms(){
-        val symptomsList = service.fetchSymptoms()
+        val symptomsList = api.getSymptoms(sharedUseCase.token)
                 .subscribeBy (
                         onError = {},
                         onSuccess = {

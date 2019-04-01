@@ -5,11 +5,12 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import io.reactivex.rxkotlin.subscribeBy
 import plugow.aidiagnose.model.Specialization
-import plugow.aidiagnose.network.ApiService
+import plugow.aidiagnose.network.Api
+import plugow.aidiagnose.useCase.SharedUseCase
+import javax.inject.Inject
 
-class SpecializationListViewModel : ViewModel() {
+class SpecializationListViewModel @Inject constructor(val api: Api, val sharedUseCase: SharedUseCase) : ViewModel() {
     var specializations: MutableLiveData<List<Specialization>> = MutableLiveData()
-    val service: ApiService by lazy { ApiService() }
 
 
     fun getSymptomList(): LiveData<List<Specialization>> {
@@ -22,7 +23,7 @@ class SpecializationListViewModel : ViewModel() {
     }
 
     fun loadSpecializations(){
-        val specializationList = service.fetchSpecializations()
+        val specializationList = api.getSpecializations(sharedUseCase.token)
                 .subscribeBy (
                         onError = {},
                         onSuccess = {specializations.value= it.body()}

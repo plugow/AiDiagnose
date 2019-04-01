@@ -4,12 +4,9 @@ import io.reactivex.Single
 import okhttp3.RequestBody
 import plugow.aidiagnose.model.*
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
-interface api {
+interface Api {
 
     @GET("symptom")
     fun getSymptoms(@Header("Authorization") token: String?): Single<Response<List<Symptom>>>
@@ -26,6 +23,7 @@ interface api {
     @GET("getVisitsForDoctor")
     fun getVisitsForDoctor(@Header("Authorization") token: String?): Single<Response<List<Visit>>>
 
+    @FormUrlEncoded
     @POST("auth/login")
-    fun loginUser(@Body params: RequestBody): Single<Response<User>>
+    fun loginUser(@Field("email") email: String, @Field("password") password:String): Single<Response<User>>
 }

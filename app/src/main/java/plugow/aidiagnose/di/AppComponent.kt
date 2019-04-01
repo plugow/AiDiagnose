@@ -8,6 +8,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 import plugow.aidiagnose.AiApplication
 import plugow.aidiagnose.di.module.ActivityBindingModule
 import plugow.aidiagnose.di.module.ApplicationModule
+import plugow.aidiagnose.di.module.NetworkModule
 import plugow.aidiagnose.di.module.ViewModelModule
 import javax.inject.Singleton
 
@@ -16,7 +17,7 @@ import javax.inject.Singleton
     ActivityBindingModule::class,
     ViewModelModule::class,
     ApplicationModule::class,
-    AndroidSupportInjectionModule::class
+    AndroidSupportInjectionModule::class, NetworkModule::class
 ])
 interface AppComponent : AndroidInjector<AiApplication>{
 

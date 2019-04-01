@@ -5,12 +5,12 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import io.reactivex.rxkotlin.subscribeBy
 import plugow.aidiagnose.model.Doctor
-import plugow.aidiagnose.network.ApiService
+import plugow.aidiagnose.network.Api
+import plugow.aidiagnose.useCase.SharedUseCase
 import javax.inject.Inject
 
-class MapViewModel @Inject constructor() : ViewModel() {
+class MapViewModel @Inject constructor(val api: Api, val sharedUseCase: SharedUseCase) : ViewModel() {
     var doctors: MutableLiveData<List<Doctor>> = MutableLiveData()
-    val service: ApiService by lazy { ApiService() }
 
 
     fun getDoctorList(): LiveData<List<Doctor>> {
@@ -23,7 +23,7 @@ class MapViewModel @Inject constructor() : ViewModel() {
     }
 
     fun loadDoctors(){
-        val doctorsList = service.fetchDoctors()
+        val doctorsList = api.getDoctors(sharedUseCase.token)
                 .subscribeBy (
                         onError = {},
                         onSuccess = {doctors.value= it.body()}
