@@ -1,11 +1,11 @@
 package plugow.aidiagnose.view
 
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_visit.*
 import plugow.aidiagnose.R
@@ -14,7 +14,7 @@ import plugow.aidiagnose.recycler.VisitAdapter
 import plugow.aidiagnose.recycler.VisitListener
 import plugow.aidiagnose.viewModel.VisitViewModel
 import javax.inject.Inject
-import android.support.v7.widget.DividerItemDecoration
+import androidx.recyclerview.widget.DividerItemDecoration
 import org.jetbrains.anko.startActivity
 import java.io.Serializable
 

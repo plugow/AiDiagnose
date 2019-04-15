@@ -1,11 +1,11 @@
 package plugow.aidiagnose.utils
 
-import android.support.design.widget.TextInputLayout
-import android.databinding.BindingAdapter
+import com.google.android.material.textfield.TextInputLayout
+import androidx.databinding.BindingAdapter
 import android.graphics.Bitmap
-import android.support.annotation.DrawableRes
-import android.support.design.widget.FloatingActionButton
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.DrawableRes
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.recyclerview.widget.RecyclerView
 import android.text.method.PasswordTransformationMethod
 import android.widget.EditText
 import android.widget.ImageView

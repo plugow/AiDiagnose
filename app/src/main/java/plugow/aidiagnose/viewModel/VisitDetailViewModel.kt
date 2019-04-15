@@ -1,8 +1,8 @@
 package plugow.aidiagnose.viewModel
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableField
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.databinding.ObservableField
 import plugow.aidiagnose.model.Visit
 import plugow.aidiagnose.utils.SingleLiveEvent
 import java.text.SimpleDateFormat

@@ -1,8 +1,8 @@
 package plugow.aidiagnose.view
 
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -43,7 +43,7 @@ class MapsActivity : DaggerAppCompatActivity(), OnMapReadyCallback {
         }
         symptomQuestionTextView.setOnClickListener { startActivity<SymptomsActivity>() }
 
-        viewModel.getDoctorList().observe(this, android.arch.lifecycle.Observer<List<Doctor>> { doctors ->
+        viewModel.getDoctorList().observe(this, androidx.lifecycle.Observer<List<Doctor>> { doctors ->
             mMap.clear()
             markers= mutableListOf()
             doctors?.forEach { doc ->

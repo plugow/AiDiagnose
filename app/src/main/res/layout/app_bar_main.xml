@@ -13,14 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         app:elevation="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/MainTheme.AppBarOverlay"
         android:background="@android:color/transparent">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:background="@android:color/transparent"
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             app:popupTheme="@style/MainTheme.PopupOverlay"
             app:navigationIcon="@drawable/baseline_menu_black_24"/>
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
 
 

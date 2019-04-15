@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/companyRow"
         android:layout_width="match_parent"
         android:layout_height="150dp">
@@ -76,5 +76,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

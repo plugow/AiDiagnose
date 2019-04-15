@@ -1,13 +1,13 @@
 package plugow.aidiagnose.view
 
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.design.widget.NavigationView
-import android.support.v4.app.FragmentManager
-import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
+import com.google.android.material.navigation.NavigationView
+import androidx.fragment.app.FragmentManager
+import androidx.core.view.GravityCompat
+import androidx.appcompat.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView

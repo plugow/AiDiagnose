@@ -9,7 +9,7 @@
     <!--type="com.bilagseksperten.bilagsekspertenandroid.ViewModel.CompanyListViewModel"/>-->
     <!--</data>-->
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:id="@+id/companyRow">
@@ -38,5 +38,5 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginRight="32dp" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

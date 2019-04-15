@@ -11,13 +11,13 @@
             type="plugow.aidiagnose.viewModel.LoginViewModel" />
     </data>
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/registerBottomSheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:behavior_hideable="false"
         app:behavior_peekHeight="90dp"
-        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+        app:layout_behavior="@string/bottom_sheet_behavior">
 
         <LinearLayout
             android:id="@+id/hiddenPanel"
@@ -72,7 +72,7 @@
                         android:layout_marginBottom="16dp"
                         android:onCheckedChanged="@{(switch, checked) -> viewModel.onSwitchChanged(checked)}"/>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/emailError"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -92,9 +92,9 @@
                             android:inputType="textEmailAddress"
                             android:onTextChanged="@{(text, start, before, count) -> viewModel.onEmailTextChanged()}"
                             android:text="@={viewModel.registerEmail}" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/nameError"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -114,9 +114,9 @@
                             android:inputType="text"
                             android:onTextChanged="@{(text, start, before, count) -> viewModel.onFirstNameTextChanged()}"
                             android:text="@={viewModel.firstName}" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/lastNameError"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -136,9 +136,9 @@
                             android:inputType="text"
                             android:onTextChanged="@{(text, start, before, count) -> viewModel.onLastNameTextChanged()}"
                             android:text="@={viewModel.lastName}" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/firstPasswordError"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -158,9 +158,9 @@
                             android:inputType="textPassword"
                             android:onTextChanged="@{(text, start, before, count) -> viewModel.onFirstPassTextChanged()}"
                             android:text="@={viewModel.registerPassword}" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/secondPasswordError"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -179,9 +179,9 @@
                             android:inputType="textPassword"
                             android:onTextChanged="@{(text, start, before, count) -> viewModel.onSecondPassTextChanged()}"
                             android:text="@={viewModel.registerRepeatPassword}" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:visibility="@{viewModel.pwzVisibility ? View.VISIBLE : View.GONE}"
                         android:id="@+id/pwdError"
                         android:layout_marginTop="16dp"
@@ -202,7 +202,7 @@
                             android:inputType="textPassword"
                             android:onTextChanged="@{(text, start, before, count) -> viewModel.onPwzChanged()}"
                             android:text="@={viewModel.pwz}" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
                         android:id="@+id/registerButton"
@@ -235,7 +235,7 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 
 </layout>

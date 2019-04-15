@@ -1,10 +1,10 @@
 package plugow.aidiagnose.viewModel
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableBoolean
-import android.databinding.ObservableField
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import plugow.aidiagnose.model.Symptom

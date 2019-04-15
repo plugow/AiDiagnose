@@ -2,7 +2,7 @@ package plugow.aidiagnose.di.module
 
 import android.app.Application
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

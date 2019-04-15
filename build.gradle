@@ -28,7 +28,8 @@ task clean(type: Delete) {
 }
 
 ext {
-    android_data_binding_version = "1.1.1"
+    androidx_version= '1.0.0-beta01'
+    android_data_binding_version = '2.0.0-beta01'
     anko_version = "0.10.3"
     dbflow_version = "4.2.4"
     retrofit_version = "2.4.0"

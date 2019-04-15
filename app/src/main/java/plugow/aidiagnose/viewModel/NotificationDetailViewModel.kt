@@ -1,7 +1,7 @@
 package plugow.aidiagnose.viewModel
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import plugow.aidiagnose.model.Visit
 import plugow.aidiagnose.network.Api
 import javax.inject.Inject

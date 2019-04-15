@@ -1,8 +1,8 @@
 package plugow.aidiagnose.viewModel
 
 
-import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableField
+import androidx.lifecycle.ViewModel
+import androidx.databinding.ObservableField
 
 class SendVisitViewModel : ViewModel() {
     var doctor:ObservableField<String> = ObservableField("dr Jan Kowalski")

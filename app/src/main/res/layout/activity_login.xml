@@ -9,15 +9,15 @@
             type="plugow.aidiagnose.viewModel.LoginViewModel"/>
     </data>
 
-    <android.support.design.widget.CoordinatorLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="32dp"
@@ -76,7 +76,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/logoProgressGroup" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/nameError"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -101,10 +101,10 @@
                         android:onTextChanged="@{(text, start, before, count) -> viewModel.onUsernameTextChanged()}"
                         android:text="@={viewModel.email}" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/passError"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -128,7 +128,7 @@
                         android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordTextChanged()}"
                         android:text="@={viewModel.password}"
                         android:textAllCaps="true" />
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
 
                 <!--<LinearLayout-->
@@ -188,16 +188,16 @@
                         android:textStyle="bold" />
 
                 </LinearLayout>
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </android.support.v4.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
 
 
         <include
             layout="@layout/register_panel"
             tools:viewModel="@{viewModel}" />
 
-    </android.support.design.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 

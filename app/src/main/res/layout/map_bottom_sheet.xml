@@ -27,14 +27,14 @@
             android:textStyle="bold"
             android:text="@string/specialization" />
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             app:data="@{viewModel.specializations}"
             android:id="@+id/recyclerBottomSheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false">
 
-        </android.support.v7.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 </layout>

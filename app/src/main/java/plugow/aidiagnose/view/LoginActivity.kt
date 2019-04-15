@@ -1,12 +1,12 @@
 package plugow.aidiagnose.view
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.design.widget.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.register_panel.*
 import org.jetbrains.anko.intentFor

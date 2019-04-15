@@ -1,9 +1,9 @@
 package plugow.aidiagnose.view
 
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,7 +65,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowClick
         mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(krakow, 14.5.toFloat()))
         mMap!!.setOnInfoWindowClickListener(this)
 
-        viewModel.getDoctorList().observe(this, android.arch.lifecycle.Observer<List<Doctor>> { doctors ->
+        viewModel.getDoctorList().observe(this, androidx.lifecycle.Observer<List<Doctor>> { doctors ->
             mMap!!.clear()
             markers= mutableListOf()
             doctors?.forEach { doc ->
